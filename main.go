@@ -97,7 +97,7 @@ func measureCrackTime(length int) (string, time.Duration) {
 }
 
 func main() {
-	maxLength := 5
+	maxLength := 6
 	passwordLengths := []int{1, 2, 3, 4, 5, 6}
 	durations := make([]opts.LineData, 0)
 	repeats := 10
