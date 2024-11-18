@@ -97,15 +97,17 @@ func measureCrackTime(length int) (string, time.Duration) {
 }
 
 func main() {
+	maxLength := 5
 	passwordLengths := []int{1, 2, 3, 4, 5, 6}
 	durations := make([]opts.LineData, 0)
 	repeats := 10
 
-	for _, length := range passwordLengths {
+	for length := 1; length <= maxLength; length++ {
 		var totalDuration time.Duration
 		for i := 0; i < repeats; i++ {
 			fmt.Printf("Attempting to crack password of length %d (Attempt %d)...\n", length, i+1)
 			_, duration := measureCrackTime(length)
+			fmt.Printf("Finish to crack password of length %d (Attempt %d: %v)...\n", length, i+1, duration)
 			totalDuration += duration
 		}
 		averageDuration := totalDuration / time.Duration(repeats)
